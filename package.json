@@ -1,0 +1,20 @@
+{
+    "name": "1",
+    "version": "20.11.1",
+    "description": "Fase de teste e desenvolvimento",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server.js"
+    },
+    "keywords": [
+      "keyword1",
+      "keyword2"
+    ],
+    "author": "Your Name",
+    "license": "MIT",
+    "dependencies": {
+    },
+    "devDependencies": {
+    }
+  }
+  
