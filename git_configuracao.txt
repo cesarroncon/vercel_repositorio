@@ -1,0 +1,5 @@
+git config --global user.name "Cesar Roncon"
+
+git config --global user.email "cesarroncon@jmdr.pt"
+
+git push --set-upstream https://github.com/cesarroncon/1repositorio.git master 
