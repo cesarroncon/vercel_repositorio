@@ -2,13 +2,9 @@
 const visualiser = require('visualiser');
 const express = require('express')
 const app = express()
+const cors = require('cors'); //necessario para comunicação entre portos/dominios
 
-//nao pode haver mais que uma app, fica meesed up
-app.get("/", (req,res)=>{
-    res.send("Server is running.");
-})
-
-
+app.use(cors()); //necessario para comunicação entre portos/dominios
 app.listen(5000,console.log("Server started on PORT 5000"));
 //FIM DO INICIALIZADOR DO SERVER******************************
 
@@ -99,15 +95,16 @@ function logLastRecord() {
 //TODOS OS SEGUNDOS
 setInterval(logLastRecord, 1000); // 1000 milliseconds = 1 second
 
-//RETORNA NO SERVIDOR OS VALORES DO FIREBASE
-app.get("/data", async (req, res) => {
+//RETORNA NO SERVIDOR OS VALORES DO FIREBASE*******************
+app.get("/", async (req, res) => {
     try {
         // Chama a função para ler os últimos dados de aceleração
         const accelData = await readLastAccelData();
         // Verifica se os dados estão disponíveis
         if (accelData) {
             // Envia os dados de aceleração como resposta
-            res.send(accelData);
+            //res.send(accelData);
+            res.json(accelData);
         } else {
             // Se nenhum dado estiver disponível, envie uma mensagem apropriada
             res.send('Nenhum dado de aceleração encontrado.');
@@ -117,8 +114,9 @@ app.get("/data", async (req, res) => {
         res.status(500).send('Erro ao ler os dados de aceleração.');
     }
 });
+//FIM DE RETORNA NO SERVIDOR OS VALORES DO FIREBASE*******************
 
-app.get('/line', async (req, res) => {
+/*app.get('/line', async (req, res) => {
     try {
     const accelData = await readLastAccelData();
     
@@ -169,7 +167,7 @@ app.get('/line', async (req, res) => {
     }
 });
 
-
+*/
 
 
 
